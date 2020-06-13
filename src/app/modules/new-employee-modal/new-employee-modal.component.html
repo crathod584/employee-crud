@@ -1,0 +1,57 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+  <button type="button" class="close pull-right" (click)="modalRef.hide()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="firstname">First Name:</label>
+      <input formControlName="firstname" placeholder="First Name" name="firstname" class="form-control" id="firstname">
+      <div class="error-msg" *ngIf="form.firstname.invalid && (form.firstname.dirty || form.firstname.touched)">
+        First Name is empty.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Last Name:</label>
+      <input formControlName="lastname" placeholder="Last name" name="lastname" class="form-control" id="lastname">
+      <div class="error-msg" *ngIf="form.lastname.invalid && (form.lastname.dirty || form.lastname.touched)">
+        Last Name is empty.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" formControlName="email" placeholder="Email" name="email" class="form-control" id="email">
+      <div class="error-msg" *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)">
+        <div *ngIf="form.email.errors.required">
+          Email is empty.
+        </div>
+        <div *ngIf="form.email.errors.pattern">
+          Email is Invalid.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contact">Mobile No.:</label>
+      <input type="number" formControlName="contact" placeholder="Mobile Number" name="contact" class="form-control" id="contact">
+      <div class="error-msg" *ngIf="form.contact.invalid && (form.contact.dirty || form.contact.touched)">
+        <div *ngIf="form.contact.errors.required">
+          Mobile Number is empty.
+        </div>
+        <div *ngIf="form.contact.errors.pattern">
+         Mobile Number is Invalid.
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+  <button type="button" class="btn btn-primary" [disabled]="employeeForm.invalid" (click)="addEmployee()">Add Employee</button>
+</div>

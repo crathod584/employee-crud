@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="p-1">
+    <button class="btn btn-primary" (click)="openModal()">Add employee</button>
+  </div>
+  <div>
+    <table class="table table-bordered">
+        <tr>
+          <th scope="col" colspan="7" class="text-center">Office Employee Details</th>
+        </tr> 
+        <tr class="thead-light">
+          <th scope="col" class="align-middle">#</th>
+          <th scope="col" class="align-middle">Name</th>
+          <th scope="col" class="align-middle">Email</th>
+          <th scope="col" class="align-middle">Mobile No.</th>
+          <th scope="col" class="align-middle">Action</th>
+        </tr>
+      <tbody>
+        <tr *ngFor="let employee of employeeData; let i=index">
+          <td class="align-middle">{{i+1}}</td>
+          <td class="align-middle">{{employee.firstname}} {{employee.lastname}}</td>
+          <td class="align-middle">{{employee.email}}</td>
+          <td class="align-middle">{{employee.contact}}</td>
+          <td>
+            <button class="btn btn-danger ml-2 " (click)="deleteUserContact(employee)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
